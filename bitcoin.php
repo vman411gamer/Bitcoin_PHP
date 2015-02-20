@@ -25,12 +25,6 @@ public class PHP_Bitcoin{
 		}
 		return $btc_amount;
 	}
-	function inBitcoinExact($currency, $amountInCurrency)
-	{
-		$urls = "https://blockchain.info/tobtc?currency=".$currency."&value=".$amountInCurrency;
-		$btc_amount = curl_get_contents($urls);
-		return $btc_amount;
-	}
 	function recieveBitcoin($recieve_address, $callback_url = '')
 	{
 		$blockchain_api = "https://blockchain.info/api/receive?method=create&cors=true&format=plain&address=".$recieve_address."&shared=false&callback=".$callback_url;
