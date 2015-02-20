@@ -16,11 +16,13 @@ public class PHP_Bitcoin{
 		$pow = pow ( 10, $precision ); 
 		return ( ceil ( $pow * $value ) + ceil ( $pow * $value - ceil ( $pow * $value ) ) ) / $pow;
 	}
-	function inBitcoin($currency, $amountInCurrency)
+	function inBitcoin($currency, $amountInCurrency, $exactChoice = 1)
 	{
 		$urls = "https://blockchain.info/tobtc?currency=".$currency."&value=".$amountInCurrency;
 		$btc_amount = curl_get_contents($urls);
-		$btc_amount = round_up($btc_amount, 3);
+		if($exactChoice == 1){
+			$btc_amount = round_up($btc_amount, 3);
+		}
 		return $btc_amount;
 	}
 	function inBitcoinExact($currency, $amountInCurrency)
